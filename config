@@ -1,0 +1,101 @@
+{
+    "layer": "top",
+    "height": 24,
+    "spacing": 5,
+    "margin-top": 5,
+    "width": 1260,
+    "margin-left": "auto",
+    "margin-right": "auto",
+    // Choose the order of the modules
+    "modules-left": [
+	"battery",
+	"network",
+	"pulseaudio",
+	"cpu",
+	"memory"
+    ],
+    "modules-center": [
+	"hyprland/workspaces"
+    ],
+    "modules-right": [
+	"tray",
+	"clock"
+    ],
+	"hyprland/window": {
+		"separate-outputs": true
+	},
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+	"custom/pacman": {
+		"interval": 3600,
+		"return-type": "json",
+		"exec": "pacman-updates",
+		"exec-if": "exit 0",
+		"on-click": "$TERMINAL -e paru; pkill -SIGRTMIN+8 waybar",
+		"signal": 8
+	},
+    "clock": {
+        "tooltip-format": "{:%A, %B %d, %Y}",
+        "format": "{:%H:%M}"
+    },
+    "battery": {
+        "states": {
+            "warning": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+        "format-charging": "󰂄",
+        "format-warning": "󰂃",
+				"tooltip-format": "{capacity}% capacity"
+    },
+	"network": {
+        "format": "{ifname}",
+        "format-wifi": "   {signalStrength}%",
+        "format-ethernet": "  {ipaddr}",
+        "format-disconnected": "Not connected", //An empty format will hide the module.
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-muted": " {volume}%",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", ""]
+		},
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol"
+	},
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "sleep 0.15 && powermenu"
+    },
+	"cpu": {
+		"format": "󰍛 {usage}%",
+		"format-alt": "󰍛 {avg_frequency} GHz",
+		"interval": 5
+	},
+	"memory": {
+		"format": " {}%",
+		"format-alt": " {used}/{total} GiB",
+		"interval": 5
+	}
+
+}
+
+// vim: ft=jsonc
