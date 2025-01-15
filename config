@@ -8,18 +8,18 @@
     "margin-right": "auto",
     // Choose the order of the modules
     "modules-left": [
-	"battery",
-	"network",
-	"pulseaudio",
-	"cpu",
-	"memory"
+		"battery",
+		"network",
+		"mpris"
     ],
     "modules-center": [
-	"hyprland/workspaces"
+		"hyprland/workspaces"
     ],
     "modules-right": [
-	"tray",
-	"clock"
+		"tray",
+		"pulseaudio",
+		"hyprland/language",
+		"clock"
     ],
 	"hyprland/window": {
 		"separate-outputs": true
@@ -29,10 +29,21 @@
         "all-outputs": true,
         "on-click": "activate"
     },
+	"hyprland/language": {
+		"format": "{}",
+		"format-en": "EN",
+		"format-uk": "UA"
+	},	
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
+	"playerctl": {
+		"format": "{title} - {artist}"
+	},
+	"mpris": {
+		"format": "{title} - {artist}"
+	},
 	"custom/pacman": {
 		"interval": 3600,
 		"return-type": "json",
@@ -51,9 +62,9 @@
         },
         "format": "{icon} {capacity}%",
         "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
-        "format-charging": "󰂄",
-        "format-warning": "󰂃",
-				"tooltip-format": "{capacity}% capacity"
+        "format-charging": "󰂄 {capacity}",
+        "format-warning": "󰂃 {capacity}",
+		"tooltip-format": "{capacity}%"
     },
 	"network": {
         "format": "{ifname}",
@@ -95,7 +106,6 @@
 		"format-alt": " {used}/{total} GiB",
 		"interval": 5
 	}
-
 }
 
 // vim: ft=jsonc

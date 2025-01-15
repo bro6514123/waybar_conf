@@ -2,8 +2,8 @@
 @define-color mantle #181825;
 @define-color crust  #1a1d24;
 
-@define-color text     #d8dee9;
-@define-color subtext0 #a6adc8;
+@define-color text     #d2d6b2;
+@define-color subtext0 #a8ab8e; /*a6abc8*/
 @define-color subtext1 #bac2de;
 
 @define-color surface0 #313244;
@@ -77,11 +77,11 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 
 #workspaces button:hover {
-    color: @blue;
+    color: #a8ab8e;
     box-shadow: inherit;
     text-shadow: inherit;
-    background: @crust;
-    border: @crust;
+    background: transparent;
+    border: transparent;
 }
 
 #workspaces button {
@@ -96,7 +96,7 @@ button {
 }
 
 #workspaces button.active {
-    color: @mauve;
+    color: @text;
 }
 
 #workspaces button.urgent {
@@ -145,7 +145,7 @@ button {
 }
 
 #pulseaudio {
-  color: @mauve;
+  color: @text;
 }
 
 #pulseaudio.muted {
@@ -153,7 +153,7 @@ button {
 }
 
 #network {
-  color: @blue;
+  color: @text;
 }
 
 #network.disconnected {
@@ -161,7 +161,7 @@ button {
 }
 
 #battery {
-    color: @green;
+    color: @text;
 }
 
 #battery.warning:not(.charging) {
